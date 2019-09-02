@@ -4,6 +4,7 @@ import { MainComponent } from './routing/main/main.component';
 import { RegisterPageComponent } from './routing/main/register-page/register-page.component';
 import { LoginPageComponent } from './routing/main/login-page/login-page.component';
 import { HomePageComponent } from './routing/main/home-page/home-page.component';
+import { SearchVacationsPageComponent } from './routing/main/home-page/search-vacations-page/search-vacations-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,12 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomePageComponent,
+        children: [
+          {
+            path: 'search-vacation',
+            component: SearchVacationsPageComponent,
+          },
+        ],
       },
     ],
   },

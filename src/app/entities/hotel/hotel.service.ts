@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Hotel } from './hotel.entity';
 
 export interface SearchHotelInput {
-  regions: string[],
-  from?: Date,
-  to?: Date,
+  regions: string,
+  from?: string,
+  to?: string,
   persons?: number,
   page: number,
   pageSize: number
@@ -16,9 +17,7 @@ export class HotelService {
   }
 
   searchHotels(input: SearchHotelInput) {
-    console.log(input);
-
-    return this.http.get(`api/hotel/search?${parseToQuery(input)}`).toPromise();
+    return this.http.get<Hotel[]>(`api/hotel/search?${parseToQuery(input)}`).toPromise();
   }
 
 }
@@ -26,7 +25,7 @@ export class HotelService {
 function parseToQuery(options: any) {
   let params = new URLSearchParams();
   for (let key in options) {
-    params.set(key, Array.isArray(options[key]) ? options[key].join() : options[key]);
+    params.set(key, options[key]);
   }
   return params;
 }

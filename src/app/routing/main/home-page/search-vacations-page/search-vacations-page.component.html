@@ -1,0 +1,12 @@
+<p-dataView [value]="hotels"
+            [paginator]="true"
+            [rows]="10">
+  <ng-template let-hotel
+               pTemplate="listItem">
+    <div class="ui-g-12">
+
+      <app-hotel-view [hotel]="hotel"></app-hotel-view>
+    </div>
+  </ng-template>
+</p-dataView>
+{{hotels | json}}

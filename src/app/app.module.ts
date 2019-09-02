@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from './routing/main/login-page/login-page.module';
 import { HomePageModule } from './routing/main/home-page/home-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchVacationsPageModule } from './routing/main/home-page/search-vacations-page/search-vacations-page.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegisterPageModule,
     LoginPageModule,
     HomePageModule,
+    SearchVacationsPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

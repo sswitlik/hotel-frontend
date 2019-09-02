@@ -6,6 +6,7 @@ import { SearchVacationComponent } from './search-component/search-vacation/sear
 import { FormModule } from '../../../modules/form/form.module';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HomePageComponent, SearchComponentComponent, SearchVacationComponent],
@@ -14,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
     FormModule,
     DropdownModule,
     ButtonModule,
+    RouterModule,
   ],
 })
 export class HomePageModule {
