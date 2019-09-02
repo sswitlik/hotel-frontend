@@ -1,0 +1,17 @@
+<div class="form-container">
+  <div class="form-header">
+    Zaloguj się
+  </div>
+
+  <form #ngForm="ngForm"
+        [formGroup]="loginForm"
+        (ngSubmit)="loginUser(loginForm.value)">
+    <app-form-field label="Login"
+                    name="username"></app-form-field>
+    <app-form-field label="Password"
+                    name="password"></app-form-field>
+    <button pButton
+            label="Wyślij"
+            (click)="ngForm.onSubmit(null)"></button>
+  </form>
+</div>

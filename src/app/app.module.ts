@@ -8,6 +8,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { RegisterPageModule } from './routing/main/register-page/register-page.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPageModule } from './routing/main/login-page/login-page.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonModule,
 
     RegisterPageModule,
+    LoginPageModule
   ],
   providers: [],
   bootstrap: [AppComponent],

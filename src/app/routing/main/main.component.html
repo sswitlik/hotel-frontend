@@ -1,13 +1,20 @@
 <p-menubar [model]="items">
   <div>
     <button pButton
-            label="Logout"
+            *ngIf="user"
+            label="Wyloguj się"
             icon="fa fa-sign-out"
+            (click)="logout()"
             style="margin-left:.25em"></button>
     <button pButton
-            label="Dołącz"
-            icon="fa fa-sign-out"
-            (click)="register()"
+            *ngIf="!user"
+            label="Zaloguj się"
+            (click)="goToLogin()"
+            style="margin-left:.25em"></button>
+    <button pButton
+            *ngIf="!user"
+            label="Zarejestruj się"
+            (click)="goToRegister()"
             style="margin-left:.25em"></button>
   </div>
 </p-menubar>
