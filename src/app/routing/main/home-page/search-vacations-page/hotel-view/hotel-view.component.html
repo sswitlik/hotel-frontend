@@ -3,7 +3,17 @@
     photo
   </div>
   <div class="ui-g-9">
-    text
+    <h3>
+      {{hotel.name}}
+    </h3>
 
+    <p>
+      {{hotel.description}}
+    </p>
+
+    <p>
+      Available: {{hotel.t_availableRooms}}
+    </p>
+    {{hotel | json}}
   </div>
 </div>

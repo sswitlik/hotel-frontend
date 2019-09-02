@@ -12,13 +12,16 @@ export class SearchVacationsPageComponent implements OnInit {
 
   hotels: Hotel[];
 
+  searchData: SearchHotelInput;
+
   constructor(private route: ActivatedRoute,
               private hotelService: HotelService) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(val => {
-      this.hotelService.searchHotels(val as SearchHotelInput)
+      this.searchData = val as SearchHotelInput;
+      this.hotelService.searchHotels(this.searchData)
         .then(res => {
           this.hotels = res;
           console.log(this.hotels);
