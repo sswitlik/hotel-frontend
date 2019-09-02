@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { UserService } from './user.service';
+import { UserService } from '../../entities/user/user.service';
 import { LocalStorageService } from '../storage/local-storage.service';
-import { User } from '../../entities/user.entity';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { User } from '../../entities/user/user.entity';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ActiveUserService {
@@ -18,13 +18,13 @@ export class ActiveUserService {
   }
 
   login(username: string, password: string) {
-    return this.userService.login({username, password})
+    return this.userService.login({ username, password })
       .then(res => {
         console.log(res);
         this.token = res.access_token;
         this.user = User.instance<User>(res.user);
         this.subject.next(this.user);
-      })
+      });
   }
 
   getObservable() {

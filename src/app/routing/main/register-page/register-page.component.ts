@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { User } from '../../../entities/user.entity';
+import { User } from '../../../entities/user/user.entity';
 import { getWithDefault } from '../../../modules/functions/get-with-default.function';
-import { UserService } from '../../../modules/authorization/user.service';
+import { UserService } from '../../../entities/user/user.service';
 
 @Component({
   selector: 'app-register-page',

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../../../entities/user.entity';
-import { UserService } from '../../../modules/authorization/user.service';
+import { User } from '../../../entities/user/user.entity';
 import { ActiveUserService } from '../../../modules/authorization/active-user.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styles: []
+  styles: [],
 })
 export class LoginPageComponent implements OnInit {
 
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private activeUserService: ActiveUserService) { }
+              private activeUserService: ActiveUserService) {
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({

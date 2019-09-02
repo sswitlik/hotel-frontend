@@ -1,11 +1,21 @@
-<label>
-  {{label}}
-</label>
+<app-field [label]="label">
+  <div [ngSwitch]="component"
+       [formGroup]="group">
+    <ng-container *ngSwitchCase="FormComponentType.INPUT">
+      <input pInputText
+             [type]="config.type"
+             [formControlName]="name">
+    </ng-container>
+    <ng-container *ngSwitchCase="FormComponentType.RANGE_CALENDAR">
+      <p-calendar selectionMode="range"
+                  [formControlName]="name"></p-calendar>
+    </ng-container>
+    <ng-container *ngSwitchCase="FormComponentType.DROPDOWN">
+      <p-dropdown [options]="config.options"
+                  [autoDisplayFirst]="false"
+                  [optionLabel]="config.optionLabel"
+                  [formControlName]="name"></p-dropdown>
+    </ng-container>
+  </div>
+</app-field>
 
-<div [ngSwitch]="component"
-     [formGroup]="group">
-  <ng-container *ngSwitchCase="FormComponentType.INPUT">
-    <input pInputText
-           [formControlName]="name">
-  </ng-container>
-</div>

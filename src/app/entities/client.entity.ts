@@ -1,4 +1,4 @@
-import { User } from './user.entity';
+import { User } from './user/user.entity';
 import { BaseEntity } from './base.entity';
 
 export class Client extends BaseEntity {

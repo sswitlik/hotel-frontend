@@ -1,0 +1,23 @@
+<div class="form-container ui-fluid">
+  <form #ngForm="ngForm"
+        [formGroup]="searchForm"
+        (ngSubmit)="search(searchForm.value)">
+    <app-form-field label="Region"
+                    name="region"
+                    [component]="FormComponentType.DROPDOWN"
+                    [config]="{options: regions,
+                    optionLabel: 'name'}"></app-form-field>
+    <app-form-field label="Termin"
+                    [component]="FormComponentType.RANGE_CALENDAR"
+                    name="fromTo"></app-form-field>
+    <app-form-field label="Ilość osób"
+                    name="persons"
+                    [config]="{type: 'number'}"></app-form-field>
+
+    <button pButton
+            label="Szukaj"
+            [disabled]="searchForm.invalid"
+            (click)="ngForm.onSubmit(null)"></button>
+  </form>
+</div>
+{{searchForm.value | json}}

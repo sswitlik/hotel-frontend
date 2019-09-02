@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { RegisterPageModule } from './routing/main/register-page/register-page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from './routing/main/login-page/login-page.module';
+import { HomePageModule } from './routing/main/home-page/home-page.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { LoginPageModule } from './routing/main/login-page/login-page.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
 
@@ -24,7 +27,8 @@ import { LoginPageModule } from './routing/main/login-page/login-page.module';
     ButtonModule,
 
     RegisterPageModule,
-    LoginPageModule
+    LoginPageModule,
+    HomePageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

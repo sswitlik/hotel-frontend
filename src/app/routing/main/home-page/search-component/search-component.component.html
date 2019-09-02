@@ -1,0 +1,10 @@
+<div class="ui-fluid">
+  <app-field label="Rodzaj Podróży">
+    <p-dropdown [options]="[{label: 'Wczasy'}]"></p-dropdown>
+  </app-field>
+
+  <div>
+    <app-search-vacation *ngIf="regions"
+                         [regions]="regions"></app-search-vacation>
+  </div>
+</div>

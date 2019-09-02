@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../entities/user.entity';
+import { User } from '../../entities/user/user.entity';
 import { ActiveUserService } from '../../modules/authorization/active-user.service';
 import { AutoUnsubscribe } from '../../modules/auto-unsubscribe/auto-unsubscribe';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-main',
@@ -11,9 +12,10 @@ import { AutoUnsubscribe } from '../../modules/auto-unsubscribe/auto-unsubscribe
 })
 export class MainComponent extends AutoUnsubscribe implements OnInit {
 
-  items = [
+  items: MenuItem[] = [
     {
-      label: 'sth',
+      icon: 'pi pi-home',
+      routerLink: '/home',
     },
   ];
 
@@ -39,7 +41,7 @@ export class MainComponent extends AutoUnsubscribe implements OnInit {
   goToLogin() {
     this.router.navigate(['login']);
   }
-  
+
   logout() {
     this.activeUserService.logout();
   }

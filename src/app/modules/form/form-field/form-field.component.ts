@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, ControlContainer } from '@angular/forms';
+import { ControlContainer, FormGroup } from '@angular/forms';
 
 export enum FormComponentType {
   INPUT,
+  RANGE_CALENDAR,
+  DROPDOWN,
 }
 
 @Component({
@@ -17,7 +19,7 @@ export class FormFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.group = this.container.control;
+    this.group = this.container.control as FormGroup;
   }
 
   @Input()
@@ -29,5 +31,8 @@ export class FormFieldComponent implements OnInit {
   @Input()
   component: FormComponentType = FormComponentType.INPUT;
 
-  group: AbstractControl;
+  @Input()
+  config: any = {};
+
+  group: FormGroup;
 }
