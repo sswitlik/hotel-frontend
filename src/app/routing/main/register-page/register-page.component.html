@@ -1,0 +1,28 @@
+<div class="form-container">
+  <div class="form-header">
+    Zarejestruj się
+  </div>
+
+  <form #ngForm="ngForm"
+        [formGroup]="registerForm"
+        (ngSubmit)="registerUser(registerForm.value)">
+    <app-form-field label="Login"
+                    name="username"></app-form-field>
+    <app-form-field label="Password"
+                    name="password"></app-form-field>
+    <app-form-field label="Confirm Password"
+                    name="confirmPassword"></app-form-field>
+
+    <div formGroupName="client">
+      <app-form-field label="Email"
+                      name="email"></app-form-field>
+    </div>
+
+    <button pButton
+            label="Wyślij"
+            (click)="ngForm.onSubmit(null)"></button>
+  </form>
+</div>
+
+{{registerForm.value | json}}
+{{registerForm.status | json}}

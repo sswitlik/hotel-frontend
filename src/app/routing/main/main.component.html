@@ -1,0 +1,15 @@
+<p-menubar [model]="items">
+  <div>
+    <button pButton
+            label="Logout"
+            icon="fa fa-sign-out"
+            style="margin-left:.25em"></button>
+    <button pButton
+            label="Dołącz"
+            icon="fa fa-sign-out"
+            (click)="register()"
+            style="margin-left:.25em"></button>
+  </div>
+</p-menubar>
+
+<router-outlet></router-outlet>

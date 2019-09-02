@@ -1,0 +1,11 @@
+<label>
+  {{label}}
+</label>
+
+<div [ngSwitch]="component"
+     [formGroup]="group">
+  <ng-container *ngSwitchCase="FormComponentType.INPUT">
+    <input pInputText
+           [formControlName]="name">
+  </ng-container>
+</div>
