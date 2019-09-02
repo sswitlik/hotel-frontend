@@ -19,8 +19,6 @@ export class RegisterPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.registerUser(null);
-
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -44,8 +42,10 @@ export class RegisterPageComponent implements OnInit {
     if (this.registerForm.invalid) {
       throw new Error('invalid');
     }
+
     this.userService.registerUser(value)
-      .then(console.log);
-    console.log(value);
+      .then(res => {
+        console.log(res);
+      });
   }
 }
