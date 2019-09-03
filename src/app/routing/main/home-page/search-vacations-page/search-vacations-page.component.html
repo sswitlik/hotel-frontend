@@ -6,8 +6,8 @@
                pTemplate="listItem">
     <div class="ui-g-12">
 
-      <app-hotel-view [hotel]="hotel"
-                      (onHotelSelect)="onSelectHotel($event)"></app-hotel-view>
+      <app-hotel-select-item [hotel]="hotel"
+                             (onHotelSelect)="onSelectHotel($event)"></app-hotel-select-item>
     </div>
 
   </ng-template>

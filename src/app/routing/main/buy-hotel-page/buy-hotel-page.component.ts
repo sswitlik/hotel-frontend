@@ -6,6 +6,11 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { FormComponentType } from '../../../modules/form/form-field/form-field.component';
+import { ActiveUserService } from '../../../modules/authorization/active-user.service';
+import { VacationService } from '../../../entities/vacation/vacation.service';
+import { Vacation } from '../../../entities/vacation/vacation.entity';
+import { Client } from '../../../entities/client.entity';
+import { Purchase } from '../../../entities/purchase/purchase.entity';
 
 @Component({
   selector: 'app-buy-hotel-page',
@@ -22,9 +27,13 @@ export class BuyHotelPageComponent implements OnInit {
 
   participantsHtmlControl: any[];
 
+  vacations: Vacation[];
+
   constructor(private router: Router,
               private fb: FormBuilder,
-              private buyHotelService: BuyHotelService) {
+              private buyHotelService: BuyHotelService,
+              private activeUserService: ActiveUserService,
+              private vacationService: VacationService) {
   }
 
   private getPraticipantsControls(quantity: number) {
@@ -41,6 +50,8 @@ export class BuyHotelPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.vacationService.getProducts()
+      .then(res => this.vacations = res);
     const data = this.buyHotelService.getData();
     if (!data) {
       return this.router.navigate(['home']);
@@ -59,11 +70,21 @@ export class BuyHotelPageComponent implements OnInit {
         email: ['', Validators.required],
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
+        id: [''],
       }),
     });
+
+    const user = this.activeUserService.user;
+    console.log(user);
+    if (user) {
+      this.purchaseForm.patchValue({ clientData: user.client });
+    }
   }
 
-  orderHotel(purchase: any) {
-    console.log(purchase);
+  orderHotel(value: { purchase: Purchase, clientData: Client }) {
+    const product = this.vacations.find(el => el.accomodations.some(acc => acc.region.name === this.hotel.region.name));
+    value.purchase.product = product;
+    value.purchase.rooms = [this.hotel.rooms.find(room => room.t_isAvailable)];
+    console.log(value);
   }
 }

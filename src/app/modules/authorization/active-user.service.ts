@@ -20,9 +20,9 @@ export class ActiveUserService {
   login(username: string, password: string) {
     return this.userService.login({ username, password })
       .then(res => {
-        console.log(res);
         this.token = res.access_token;
         this.user = User.instance<User>(res.user);
+        this.saveUser();
         this.subject.next(this.user);
       });
   }
@@ -34,6 +34,19 @@ export class ActiveUserService {
   logout() {
     this.user = null;
     this.token = null;
+    this.saveUser();
     this.subject.next(this.user);
+  }
+
+  private saveUser() {
+    this.localStorageService.set('user', { user: this.user, token: this.token });
+  }
+
+  private loadUser() {
+    const data = this.localStorageService.get('user');
+    if (data) {
+      this.user = data.user;
+      this.token = data.token;
+    }
   }
 }

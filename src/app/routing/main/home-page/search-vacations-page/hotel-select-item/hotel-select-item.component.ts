@@ -6,7 +6,7 @@ import { Purchase } from '../../../../../entities/purchase/purchase.entity';
 import { SearchHotelInput } from '../../../../../entities/hotel/hotel.service';
 
 @Component({
-  selector: 'app-hotel-view',
+  selector: 'app-hotel-select-item',
   templateUrl: './hotel-select-item.component.html',
   styles: [],
 })
