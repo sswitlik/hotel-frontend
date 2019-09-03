@@ -25,6 +25,8 @@ export class RegisterPageComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
       client: this.fb.group({
         email: ['', [Validators.required, Validators.email]],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
       }),
     }, { validators: [this.getConfirmPasswordValidator()] });
   }

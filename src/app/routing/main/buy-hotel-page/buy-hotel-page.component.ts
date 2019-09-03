@@ -11,6 +11,7 @@ import { VacationService } from '../../../entities/vacation/vacation.service';
 import { Vacation } from '../../../entities/vacation/vacation.entity';
 import { Client } from '../../../entities/client.entity';
 import { Purchase } from '../../../entities/purchase/purchase.entity';
+import { PurchaseService } from '../../../entities/purchase/purchase.service';
 
 @Component({
   selector: 'app-buy-hotel-page',
@@ -33,6 +34,7 @@ export class BuyHotelPageComponent implements OnInit {
               private fb: FormBuilder,
               private buyHotelService: BuyHotelService,
               private activeUserService: ActiveUserService,
+              private purchaseService: PurchaseService,
               private vacationService: VacationService) {
   }
 
@@ -85,6 +87,11 @@ export class BuyHotelPageComponent implements OnInit {
     const product = this.vacations.find(el => el.accomodations.some(acc => acc.region.name === this.hotel.region.name));
     value.purchase.product = product;
     value.purchase.rooms = [this.hotel.rooms.find(room => room.t_isAvailable)];
-    console.log(value);
+
+    value.purchase.termFrom = new Date(this.searchData.from);
+    value.purchase.termTo = new Date(this.searchData.to);
+    
+    this.purchaseService.buyProduct(value)
+      .then(() => this.router.navigate(['home']));
   }
 }
