@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styles: [],
 })
 export class SearchVacationComponent implements OnInit {
+  readonly DAY = 24 * 3600 * 1000;
+
   FormComponentType = FormComponentType;
 
   @Input()
@@ -24,10 +26,11 @@ export class SearchVacationComponent implements OnInit {
   }
 
   ngOnInit() {
+    const startDate = new Date();
     this.searchForm = this.fb.group({
       region: [null, [Validators.required]],
       persons: [2, [Validators.required, Validators.min(1)]],
-      fromTo: [[new Date()], [Validators.required]],
+      fromTo: [[dateToZero(new Date(Date.now() + this.DAY))], [Validators.required]],
     });
   }
 
