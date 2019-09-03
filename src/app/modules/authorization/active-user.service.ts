@@ -15,6 +15,7 @@ export class ActiveUserService {
 
   constructor(private userService: UserService,
               private localStorageService: LocalStorageService) {
+    this.loadUser();
   }
 
   login(username: string, password: string) {
@@ -47,6 +48,7 @@ export class ActiveUserService {
     if (data) {
       this.user = data.user;
       this.token = data.token;
+      this.subject.next(this.user);
     }
   }
 }
