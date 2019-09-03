@@ -13,6 +13,7 @@ import { HomePageModule } from './routing/main/home-page/home-page.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchVacationsPageModule } from './routing/main/home-page/search-vacations-page/search-vacations-page.module';
 import { BuyHotelPageModule } from './routing/main/buy-hotel-page/buy-hotel-page.module';
+import { MyProfilePageModule } from './routing/main/my-profile-page/my-profile-page.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BuyHotelPageModule } from './routing/main/buy-hotel-page/buy-hotel-page
     HomePageModule,
     SearchVacationsPageModule,
     BuyHotelPageModule,
+    MyProfilePageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

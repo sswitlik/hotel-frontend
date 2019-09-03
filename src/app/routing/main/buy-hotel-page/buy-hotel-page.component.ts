@@ -77,7 +77,6 @@ export class BuyHotelPageComponent implements OnInit {
     });
 
     const user = this.activeUserService.user;
-    console.log(user);
     if (user) {
       this.purchaseForm.patchValue({ clientData: user.client });
     }
@@ -90,7 +89,7 @@ export class BuyHotelPageComponent implements OnInit {
 
     value.purchase.termFrom = new Date(this.searchData.from);
     value.purchase.termTo = new Date(this.searchData.to);
-    
+
     this.purchaseService.buyProduct(value)
       .then(() => this.router.navigate(['home']));
   }

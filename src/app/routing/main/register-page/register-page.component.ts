@@ -45,9 +45,6 @@ export class RegisterPageComponent implements OnInit {
       throw new Error('invalid');
     }
 
-    this.userService.registerUser(value)
-      .then(res => {
-        console.log(res);
-      });
+    this.userService.registerUser(value);
   }
 }

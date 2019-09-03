@@ -27,7 +27,6 @@ export class SearchVacationsPageComponent implements OnInit {
       this.hotelService.searchHotels(this.searchData)
         .then(res => {
           this.hotels = res;
-          console.log(this.hotels);
         });
     });
   }

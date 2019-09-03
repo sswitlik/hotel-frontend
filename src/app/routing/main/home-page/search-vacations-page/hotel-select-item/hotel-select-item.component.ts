@@ -27,7 +27,6 @@ export class HotelSelectItemComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('change');
     this.searchData = this.searchMainComponent.searchData;
     if (changes.hotel && this.hotel) {
       this.prepareHotel(this.hotel);
@@ -46,9 +45,7 @@ export class HotelSelectItemComponent implements OnChanges, OnInit {
       }
     });
 
-    console.log(freeSpaceInHotel);
     hotel.t_availableRooms = (freeSpaceInHotel >= this.searchData.persons) ? 1 : 0;
-    console.log(hotel);
   }
 
   private prepareRoom(room: Room) {
@@ -61,6 +58,6 @@ export class HotelSelectItemComponent implements OnChanges, OnInit {
         termTo: new Date(this.searchData.to),
       }, roomPurchase);
     });
-    console.log(room.t_isAvailable);
+
   }
 }

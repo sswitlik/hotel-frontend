@@ -6,6 +6,7 @@ import { LoginPageComponent } from './routing/main/login-page/login-page.compone
 import { HomePageComponent } from './routing/main/home-page/home-page.component';
 import { SearchVacationsPageComponent } from './routing/main/home-page/search-vacations-page/search-vacations-page.component';
 import { BuyHotelPageComponent } from './routing/main/buy-hotel-page/buy-hotel-page.component';
+import { MyProfilePageComponent } from './routing/main/my-profile-page/my-profile-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'buy-hotel',
         component: BuyHotelPageComponent,
+      },
+      {
+        path: 'my-profile',
+        component: MyProfilePageComponent,
       },
       {
         path: 'home',

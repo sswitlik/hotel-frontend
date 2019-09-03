@@ -12,12 +12,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MainComponent extends AutoUnsubscribe implements OnInit {
 
-  items: MenuItem[] = [
-    {
-      icon: 'pi pi-home',
-      routerLink: '/home',
-    },
-  ];
+  items: MenuItem[];
 
   user: User;
 
@@ -31,6 +26,7 @@ export class MainComponent extends AutoUnsubscribe implements OnInit {
       .pipe(this.takeUntilDestroy())
       .subscribe(val => {
         this.user = val;
+        this.setMenuItems();
       });
   }
 
@@ -44,5 +40,21 @@ export class MainComponent extends AutoUnsubscribe implements OnInit {
 
   logout() {
     this.activeUserService.logout();
+  }
+
+  private setMenuItems() {
+    this.items = [
+      {
+        icon: 'pi pi-home',
+        routerLink: '/home',
+      },
+    ];
+
+    if (this.user) {
+      this.items.push({
+        icon: 'pi pi-user',
+        routerLink: '/my-profile',
+      });
+    }
   }
 }
