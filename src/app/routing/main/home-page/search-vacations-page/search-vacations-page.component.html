@@ -1,11 +1,14 @@
 <p-dataView [value]="hotels"
             [paginator]="true"
-            [rows]="10">
+            [rows]="10"
+            [totalRecords]="100">
   <ng-template let-hotel
                pTemplate="listItem">
     <div class="ui-g-12">
 
-      <app-hotel-view [hotel]="hotel"></app-hotel-view>
+      <app-hotel-view [hotel]="hotel"
+                      (onHotelSelect)="onSelectHotel($event)"></app-hotel-view>
     </div>
+
   </ng-template>
 </p-dataView>

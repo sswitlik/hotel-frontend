@@ -1,0 +1,58 @@
+<app-hotel-view [hotel]="hotel"
+                [selection]="false"></app-hotel-view>
+
+<div class="ui-g">
+  <div class="ui-md-6 ui-g-4">
+
+    <div class="form-container ui-fluid">
+      <h4 class="form-header">
+        Dane Uczestników
+      </h4>
+
+      <form #ngForm="ngForm"
+            [formGroup]="purchaseForm"
+            (ngSubmit)="orderHotel(purchaseForm.value)">
+
+        <div formGroupName="purchase">
+          <div formArrayName="participants">
+            <div *ngFor="let participant of participantsHtmlControl; let index = index"
+                 class="ui-g-6">
+              <div class="section">
+                Uczestnik {{index}}:
+              </div>
+
+              <div [formGroupName]="index">
+                <app-form-field label="Imię"
+                                name="firstName"></app-form-field>
+                <app-form-field label="Nazwisko"
+                                name="lastName"></app-form-field>
+                <app-form-field label="Data urodzenia"
+                                [component]="FormComponentType.CALENDAR"
+                                name="birthDate"></app-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <h4 class="form-header">
+          Dane Kupującego
+        </h4>
+        <div formGroupName="clientData">
+          <app-form-field label="Email"
+                          name="email"></app-form-field>
+          <app-form-field label="Imię"
+                          name="firstName"></app-form-field>
+          <app-form-field label="Nazwisko"
+                          name="lastName"></app-form-field>
+
+        </div>
+
+        <button pButton
+                label="Zatwierdź"
+                [disabled]="purchaseForm.invalid"
+                (click)="ngForm.onSubmit(null)"></button>
+      </form>
+    </div>
+  </div>
+</div>

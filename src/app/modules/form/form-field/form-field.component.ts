@@ -4,6 +4,7 @@ import { ControlContainer, FormGroup } from '@angular/forms';
 export enum FormComponentType {
   INPUT,
   RANGE_CALENDAR,
+  CALENDAR,
   DROPDOWN,
 }
 

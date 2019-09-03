@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hotel } from '../../../../entities/hotel/hotel.entity';
 import { HotelService, SearchHotelInput } from '../../../../entities/hotel/hotel.service';
+import { BuyHotelService } from '../../../../modules/storage/buy-hotel.service';
 
 @Component({
   selector: 'app-search-vacations-page',
@@ -15,7 +16,9 @@ export class SearchVacationsPageComponent implements OnInit {
   searchData: SearchHotelInput;
 
   constructor(private route: ActivatedRoute,
-              private hotelService: HotelService) {
+              private router: Router,
+              private hotelService: HotelService,
+              private buyHotelService: BuyHotelService) {
   }
 
   ngOnInit() {
@@ -29,4 +32,8 @@ export class SearchVacationsPageComponent implements OnInit {
     });
   }
 
+  onSelectHotel(hotel: Hotel) {
+    this.buyHotelService.setData(hotel, this.searchData);
+    this.router.navigate(['buy-hotel']);
+  }
 }

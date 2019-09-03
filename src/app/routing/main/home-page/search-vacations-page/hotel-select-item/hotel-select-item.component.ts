@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Hotel } from '../../../../../entities/hotel/hotel.entity';
 import { Room } from '../../../../../entities/room/room.entity';
 import { SearchVacationsPageComponent } from '../search-vacations-page.component';
@@ -7,13 +7,19 @@ import { SearchHotelInput } from '../../../../../entities/hotel/hotel.service';
 
 @Component({
   selector: 'app-hotel-view',
-  templateUrl: './hotel-view.component.html',
+  templateUrl: './hotel-select-item.component.html',
   styles: [],
 })
-export class HotelViewComponent implements OnChanges, OnInit {
+export class HotelSelectItemComponent implements OnChanges, OnInit {
 
   @Input()
   hotel: Hotel;
+
+  @Input()
+  selection: boolean = true;
+
+  @Output()
+  onHotelSelect = new EventEmitter<Hotel>();
 
   private searchData: SearchHotelInput;
 
@@ -40,7 +46,8 @@ export class HotelViewComponent implements OnChanges, OnInit {
       }
     });
 
-    hotel.t_availableRooms = (freeSpaceInHotel > this.searchData.persons) ? 1 : 0;
+    console.log(freeSpaceInHotel);
+    hotel.t_availableRooms = (freeSpaceInHotel >= this.searchData.persons) ? 1 : 0;
     console.log(hotel);
   }
 
@@ -48,11 +55,12 @@ export class HotelViewComponent implements OnChanges, OnInit {
     room.t_isAvailable = !room.purchases.some(roomPurchase => {
       roomPurchase.termTo = new Date(roomPurchase.termTo);
       roomPurchase.termFrom = new Date(roomPurchase.termFrom);
-      
+
       return Purchase.isCollision({
         termFrom: new Date(this.searchData.from),
         termTo: new Date(this.searchData.to),
       }, roomPurchase);
     });
+    console.log(room.t_isAvailable);
   }
 }

@@ -10,6 +10,9 @@
       <p-calendar selectionMode="range"
                   [formControlName]="name"></p-calendar>
     </ng-container>
+    <ng-container *ngSwitchCase="FormComponentType.CALENDAR">
+      <p-calendar [formControlName]="name"></p-calendar>
+    </ng-container>
     <ng-container *ngSwitchCase="FormComponentType.DROPDOWN">
       <p-dropdown [options]="config.options"
                   [autoDisplayFirst]="false"

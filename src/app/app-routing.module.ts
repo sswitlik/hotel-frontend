@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './routing/main/register-page/register-pag
 import { LoginPageComponent } from './routing/main/login-page/login-page.component';
 import { HomePageComponent } from './routing/main/home-page/home-page.component';
 import { SearchVacationsPageComponent } from './routing/main/home-page/search-vacations-page/search-vacations-page.component';
+import { BuyHotelPageComponent } from './routing/main/buy-hotel-page/buy-hotel-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginPageComponent,
+      },
+      {
+        path: 'buy-hotel',
+        component: BuyHotelPageComponent,
       },
       {
         path: 'home',

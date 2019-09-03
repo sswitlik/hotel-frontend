@@ -1,0 +1,25 @@
+<div class="ui-g">
+  <div class="ui-g-3">
+    photo
+  </div>
+  <div class="ui-g-9">
+    <h3>
+      {{hotel.name}}
+    </h3>
+
+    <p class="section">
+      {{hotel.description}}
+    </p>
+
+    <ng-container *ngIf="selection">
+      <p class="section">
+        {{hotel.t_availableRooms ? "Dostępny" : "Niedostępny"}}
+      </p>
+
+      <button pButton
+              label="Wybierz"
+              [disabled]="!hotel.t_availableRooms"
+              (click)="onHotelSelect.emit(hotel)"></button>
+    </ng-container>
+  </div>
+</div>
