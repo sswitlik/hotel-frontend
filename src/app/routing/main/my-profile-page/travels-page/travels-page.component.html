@@ -1,1 +1,38 @@
-<p>travels-page works!</p>
+<div class="section">
+  <p-table [value]="travels"
+           [autoLayout]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Status</th>
+        <th>Termin</th>
+        <th>Cena</th>
+        <th>Opłacono</th>
+        <th>Akcje</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body"
+                 let-purchase>
+      <tr>
+        <td>{{purchase.status}}</td>
+        <td>{{purchase.termFrom | date:'shortDate'}} - {{purchase.termTo | date:'shortDate'}} </td>
+        <td>{{purchase.price | currency:'PLN'}}</td>
+        <td>{{paymentSum(purchase) | currency:'PLN'}}</td>
+        <td>
+          <button pButton
+                  label="Zapłać"
+                  (click)="showDialog(purchase)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="dialogVisible"
+          [modal]="true"
+          [draggable]="false"
+          [showHeader]="false"
+          styleClass="payment-dialog">
+  <app-payment-form (whenSubmit)="payForProduct($event); dialogVisible = false"
+                    (cancel)="dialogVisible = false"
+                    [purchase]="dialogPurchase"></app-payment-form>
+</p-dialog>

@@ -1,6 +1,7 @@
 import { BaseEntity } from '../base.entity';
 import { Client } from '../client.entity';
 import { Room } from '../room/room.entity';
+import { Payment } from '../payment/payment.entity';
 
 export type PurchaseTerm = Pick<Purchase, 'termFrom' | 'termTo'>;
 
@@ -21,6 +22,6 @@ export class Purchase extends BaseEntity {
   client: Client;
   product: any;
   rooms: Room[];
-  payments: any[];
+  payments: Payment[];
   price: string;
 }

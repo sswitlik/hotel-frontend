@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FieldComponent } from './field/field.component';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [FormFieldComponent, FieldComponent],
@@ -15,6 +16,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ReactiveFormsModule,
     CalendarModule,
     DropdownModule,
+    InputMaskModule,
   ],
   exports: [
     ReactiveFormsModule,
